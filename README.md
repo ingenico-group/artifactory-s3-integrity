@@ -42,6 +42,12 @@ This allows us to avoid shift in keys.
 
 Feel free to handle that more intelligently.
 
+One better way to do it would be to create a sliding window on Athena side.
+
+If we don't find the key in the current Athena page, we get the next page until it's not possible to have it.
+
+Meaning that we have object starting with a different hex: 00 -> 01 if we have 01 objects, it means we went through all the 00.
+
 If the key is not found in the Athena table (if the binary is more recent than the last inventory for instance), the script checks directly on S3.
 
 If after that the binary is still not found, it's reported as inconsistent.
